@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <meta name="description" content="A privacy-first campus placement platform that matches students with opportunities and tracks automated outreach.">
+  <title>Pathway — Campus placement, in motion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="Pathway home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23.5 13.3 7h5.4L10.4 24H5Zm10.2 1L22.7 8H28l-7.5 16.5h-5.3Z" fill="currentColor"/></svg></span>
+        <span class="brand-name">pathway<span class="brand-period">.</span></span>
+      </a>
+      <button class="workspace-switcher" id="workspace-switcher" type="button" aria-label="Current workspace: Northstar University">
+        <span class="workspace-avatar">N</span>
+        <span class="workspace-copy"><strong>Northstar University</strong><small>Placement office</small></span>
+        <span class="switcher-chevron">⌄</span>
+      </button>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span>Overview</button>
+        <button class="nav-item" data-view="opportunities"><span class="nav-icon">⌕</span>Opportunities<span class="nav-count" id="nav-jobs-count">12</span></button>
+        <button class="nav-item" data-view="students"><span class="nav-icon">♙</span>Students</button>
+        <button class="nav-item" data-view="recommendations"><span class="nav-icon">↗</span>Recommendations</button>
+        <button class="nav-item" data-view="activity"><span class="nav-icon">◷</span>Activity log</button>
+      </nav>
+      <div class="nav-label settings-label">MANAGE</div>
+      <nav class="main-nav" aria-label="Management navigation">
+        <button class="nav-item" data-view="automations"><span class="nav-icon">⌘</span>Automations<span class="live-dot"></span></button>
+        <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Settings</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Your placement co-pilot</strong><p>Good matches start with student consent and clear job criteria.</p><button data-view="settings">Review privacy settings <span>→</span></button></div>
+        <button class="user-profile" id="user-profile" type="button" aria-label="Open administrator settings"><span class="user-avatar">AM</span><span class="user-copy"><strong>Alex Morgan</strong><small>Administrator</small></span><span class="more-dots">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <label class="search-box"><span>⌕</span><input id="global-search" type="search" placeholder="Search anything..." aria-label="Search students and opportunities"><kbd>⌘ K</kbd></label>
+          <button class="icon-button notification-button" aria-label="Notifications" id="notification-button">♧<i></i></button>
+          <span class="top-avatar">AM</span>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="page-view active" id="view-overview">
+          <div class="welcome-row">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> <span id="current-date"></span></div><h1>Your next great match<br>is already <span>in motion.</span></h1><p class="page-subtitle">Here’s what’s happening across your placement network.</p></div>
+            <button class="button button-primary" id="run-workflow"><span class="sparkle">✦</span> Run matching <span class="button-arrow">↗</span></button>
+          </div>
+          <div class="automation-banner"><span class="automation-icon">✳</span><div><strong>Event-triggered matching is ready</strong><p>New jobs and student profiles trigger matching automatically · email delivery is simulated</p></div><button class="text-link" data-view="automations">View automation <span>→</span></button><span class="banner-status"><i></i> DEMO</span></div>
+
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-heading">Active opportunities <span class="stat-icon lavender">↗</span></div><div class="stat-value" id="stat-jobs">128</div><div class="stat-foot"><span class="trend-positive">↗ 12%</span><span>vs. last month</span><span class="mini-sparkline purple">▁▃▂▅▄▆▅▇</span></div></article>
+            <article class="stat-card"><div class="stat-heading">Eligible matches <span class="stat-icon mint">⌕</span></div><div class="stat-value" id="stat-matches">342</div><div class="stat-foot"><span class="trend-positive">↗ 18%</span><span>vs. last month</span><span class="mini-sparkline green">▁▂▄▃▅▄▆▇</span></div></article>
+            <article class="stat-card"><div class="stat-heading">Student alerts sent <span class="stat-icon peach">✉</span></div><div class="stat-value" id="stat-alerts">276</div><div class="stat-foot"><span class="trend-positive">↗ 8%</span><span>delivery rate</span><span class="mini-sparkline orange">▂▁▄▃▅▄▆▇</span></div></article>
+            <article class="stat-card"><div class="stat-heading">Consented introductions <span class="stat-icon blue">♙</span></div><div class="stat-value" id="stat-recommendations">64</div><div class="stat-foot"><span class="trend-positive">↗ 24%</span><span>this semester</span><span class="mini-sparkline blue-line">▁▂▃▂▄▅▆▇</span></div></article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel matches-panel">
+              <div class="panel-heading"><div><div class="section-kicker">THE RIGHT OPPORTUNITY</div><h2>Fresh matches</h2><p>Strong fits, explained and ready to share.</p></div><button class="button button-quiet" data-view="recommendations">All matches <span>→</span></button></div>
+              <div class="match-list" id="fresh-matches"></div>
+              <div class="panel-footnote"><span class="footnote-mark">✦</span> Match scores show profile alignment, not a guarantee of hiring success.</div>
+            </section>
+            <aside class="right-column">
+              <section class="panel activity-panel">
+                <div class="panel-heading compact"><div><div class="section-kicker">ALL SYSTEMS, GO</div><h2>Recent activity</h2></div><button class="dots-button" data-view="activity" aria-label="View all activity">···</button></div>
+                <div class="activity-list" id="recent-activity"></div>
+                <button class="activity-footer" data-view="activity">See all activity <span>→</span></button>
+              </section>
+              <section class="panel insight-panel">
+                <div class="insight-top"><span class="insight-spark">✳</span><span>PATHWAY INSIGHT</span><span class="insight-ai">AI</span></div>
+                <h3>One small skill, a lot more possibilities.</h3>
+                <p>Adding <strong>cloud fundamentals</strong> to 8 student profiles could unlock 14 additional opportunities this week.</p>
+                <button id="insight-action" class="insight-action">Explore skill gaps <span>→</span></button>
+                <div class="insight-decoration">↗</div>
+              </section>
+            </aside>
+          </div>
+          <section class="panel opportunities-panel">
+            <div class="panel-heading"><div><div class="section-kicker">JUST IN</div><h2>New opportunities</h2></div><button class="button button-quiet" data-view="opportunities">Browse all jobs <span>→</span></button></div>
+            <div class="opportunity-table-wrap"><table class="data-table"><thead><tr><th>ROLE & COMPANY</th><th>LOCATION</th><th>TYPE</th><th>ELIGIBLE STUDENTS</th><th>DEADLINE</th><th></th></tr></thead><tbody id="new-opportunities"></tbody></table></div>
+          </section>
+          <footer class="page-footer"><span>© 2026 Pathway · Built for people, not just pipelines.</span><span>Privacy first <span class="footer-dot">·</span> Every match has a reason</span></footer>
+        </section>
+
+        <section class="page-view" id="view-opportunities">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> DISCOVER & MATCH</div><h1>Opportunities</h1><p class="page-subtitle">Approved openings, matched with students who meet the criteria.</p></div><button class="button button-primary" id="add-job-button">＋ Add opportunity</button></div>
+          <div class="toolbar"><label class="table-search">⌕ <input id="job-search" type="search" placeholder="Search roles or companies"></label><select id="job-filter" aria-label="Filter opportunities"><option value="all">All opportunities</option><option value="active">Active</option><option value="closing">Closing soon</option></select><span class="toolbar-spacer"></span><span class="source-note"><i></i> Authorized sources only</span></div>
+          <section class="panel full-table-panel"><div class="opportunity-table-wrap"><table class="data-table"><thead><tr><th>ROLE & COMPANY</th><th>LOCATION</th><th>TYPE</th><th>SKILLS</th><th>MATCHES</th><th>DEADLINE</th></tr></thead><tbody id="all-opportunities"></tbody></table></div></section>
+          <footer class="page-footer"><span>Showing approved opportunities from configured sources.</span><span>Duplicate and expired listings are excluded.</span></footer>
+        </section>
+
+        <section class="page-view" id="view-students">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> PEOPLE FIRST</div><h1>Student directory</h1><p class="page-subtitle">Profiles, preferences, and sharing consent—all in one place.</p></div><button class="button button-primary" id="add-student-button">＋ Add student</button></div>
+          <div class="student-summary"><div><span class="summary-number" id="student-total">0</span><span>active profiles</span></div><div><span class="consent-indicator"></span><span id="consent-total">0</span><span> opted into recruiter sharing</span></div><div class="summary-end">Student data is only shared with explicit consent.</div></div>
+          <div class="toolbar"><label class="table-search">⌕ <input id="student-search" type="search" placeholder="Search students or skills"></label><select id="student-consent-filter" aria-label="Filter students by consent"><option value="all">All students</option><option value="sharing">Sharing consent</option><option value="private">Private profiles</option></select></div>
+          <section class="panel full-table-panel"><div class="opportunity-table-wrap"><table class="data-table"><thead><tr><th>STUDENT</th><th>PROGRAM</th><th>GRADUATION</th><th>TOP SKILLS</th><th>JOB ALERTS</th><th>RECRUITER SHARING</th></tr></thead><tbody id="all-students"></tbody></table></div></section>
+        </section>
+
+        <section class="page-view" id="view-recommendations">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> EXPLAINABLE & CONSENTED</div><h1>Recommendations</h1><p class="page-subtitle">Every introduction is eligibility-checked, explainable, and permissioned.</p></div><button class="button button-primary" id="recommendation-refresh">✦ Run matching</button></div>
+          <div class="recommendation-note"><span>✳</span><div><strong>Student privacy is built into every recommendation.</strong><p>Only students with explicit recruiter-sharing consent appear in company shortlists. Match scores indicate alignment, not hiring outcomes.</p></div></div>
+          <div class="toolbar"><label class="table-search">⌕ <input id="recommendation-search" type="search" placeholder="Search students or roles"></label><select id="recommendation-filter" aria-label="Filter recommendations"><option value="all">All matches</option><option value="high">Strong matches · 80%+</option></select><span class="toolbar-spacer"></span><span class="source-note">Updated just now</span></div>
+          <div class="recommendation-grid" id="recommendation-cards"></div>
+        </section>
+
+        <section class="page-view" id="view-activity">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> TRANSPARENT BY DESIGN</div><h1>Activity log</h1><p class="page-subtitle">A clear record of matching runs, notifications, and consent-aware actions.</p></div><button class="button button-quiet" id="export-activity">↓ Export log</button></div>
+          <div class="activity-summary-strip"><div><span class="summary-number" id="log-count">0</span><span> recorded actions</span></div><div><span class="status-pill status-delivered">● Delivered</span><span> simulated in demo mode</span></div></div>
+          <section class="panel full-table-panel"><div class="opportunity-table-wrap"><table class="data-table"><thead><tr><th>ACTION</th><th>DETAILS</th><th>RECIPIENT</th><th>STATUS</th><th>TIME</th></tr></thead><tbody id="full-activity"></tbody></table></div></section>
+        </section>
+
+        <section class="page-view" id="view-automations">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR WORKFLOW, ON AUTOPILOT</div><h1>Automations</h1><p class="page-subtitle">Configure matching and notifications with human-friendly controls.</p></div><span class="automation-running-pill"><i></i> Event workflows enabled</span></div>
+          <div class="automation-cards">
+            <article class="panel automation-card"><div class="automation-card-icon lavender">⌕</div><div class="automation-card-heading"><div><h2>Opportunity discovery</h2><p>Sample data and manually added authorized listings.</p></div><label class="toggle"><input id="toggle-discovery" type="checkbox" checked><span></span></label></div><div class="automation-details"><div><span>Sources connected</span><strong>Demo dataset &amp; manual entries</strong></div><div><span>Matching trigger</span><strong>New job or student profile</strong></div><div><span>External scans</span><strong>Not connected in demo</strong></div></div><button class="automation-action" data-view="opportunities">Review opportunities <span>→</span></button></article>
+            <article class="panel automation-card"><div class="automation-card-icon peach">✉</div><div class="automation-card-heading"><div><h2>Student job alerts</h2><p>Personalized opportunities for opted-in students.</p></div><label class="toggle"><input id="toggle-alerts" type="checkbox" checked><span></span></label></div><div class="automation-details"><div><span>Eligibility threshold</span><strong>55% profile alignment</strong></div><div><span>Duplicate protection</span><strong>Enabled · one alert per job</strong></div><div><span>Opt-outs honored</span><strong>Always</strong></div></div><button class="automation-action" data-view="activity">View delivery log <span>→</span></button></article>
+            <article class="panel automation-card"><div class="automation-card-icon blue">♙</div><div class="automation-card-heading"><div><h2>Company recommendations</h2><p>Share approved profiles with participating recruiters.</p></div><label class="toggle"><input id="toggle-sharing" type="checkbox" checked><span></span></label></div><div class="automation-details"><div><span>Sharing requirement</span><strong>Explicit student consent</strong></div><div><span>Contact requirement</span><strong>Verified recruiter only</strong></div><div><span>Shared profile fields</span><strong>Approved skills & projects</strong></div></div><button class="automation-action" data-view="students">Review consent settings <span>→</span></button></article>
+          </div>
+          <div class="workflow-note"><span>ⓘ</span><p><strong>Demo mode:</strong> Emails are recorded as simulated deliveries in this prototype. No messages are sent and no external job boards are scraped.</p></div>
+          <section class="panel automation-run-panel"><div><div class="section-kicker">ON DEMAND</div><h2>Ready for a fresh match?</h2><p>Process eligible students and active roles now. Duplicate alerts are skipped and private profiles stay private.</p></div><button class="button button-primary" id="run-workflow-secondary"><span>✦</span> Run matching now <span class="button-arrow">↗</span></button></section>
+        </section>
+
+        <section class="page-view" id="view-settings">
+          <div class="view-title-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> TRUST, BUILT IN</div><h1>Settings</h1><p class="page-subtitle">Manage your workspace, permitted sources, and privacy safeguards.</p></div></div>
+          <div class="settings-grid">
+            <section class="panel settings-card"><div class="section-kicker">WORKSPACE</div><h2>Northstar University</h2><p>Placement office workspace · Administrator access</p><div class="setting-row"><span>Workspace email</span><strong>placements@northstar.edu</strong></div><div class="setting-row"><span>Default graduation year</span><strong>2027</strong></div></section>
+            <section class="panel settings-card"><div class="section-kicker">JOB SOURCES</div><h2>Demo &amp; authorized listings</h2><p>This prototype uses sample roles and manually added opportunities. Live feeds are not connected; only add listings you are authorized to share.</p><div class="setting-row"><span>Sample opportunity dataset</span><span class="source-enabled">● Active</span></div><div class="setting-row"><span>Manual HTTPS listings</span><span class="source-enabled">● Active</span></div><div class="setting-row"><span>Live job-board / API feeds</span><span style="color:#9aa09c">Not connected</span></div></section>
+            <section class="panel settings-card privacy-card"><div class="section-kicker">PRIVACY & CONSENT</div><h2>Student data stays in students’ hands.</h2><p>Profile sharing is off by default for every new student. Job alerts and recruiter sharing are separate preferences, and can be withdrawn at any time.</p><div class="privacy-points"><span>✓</span> Private profiles never appear in recruiter shortlists.<br><span>✓</span> Alerts honor student preferences and duplicate protection.<br><span>✓</span> Candidate details are minimized to approved fields.</div><button class="button button-quiet" data-view="students">Manage student preferences <span>→</span></button></section>
+            <section class="panel settings-card"><div class="section-kicker">DELIVERY</div><h2>Email configuration</h2><p>External email is not configured in this demo environment.</p><div class="workflow-note compact-note"><span>ⓘ</span><p>Simulated notifications are tracked in Activity log. Configure an approved email provider before enabling real delivery.</p></div></section>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <dialog class="modal" id="job-modal">
+    <form id="job-form" method="dialog">
+      <div class="modal-heading"><div><div class="section-kicker">GROW YOUR OPPORTUNITY NETWORK</div><h2>Add an opportunity</h2><p>Use a verified, authorized source. Required skills are matched against student profiles.</p></div><button type="button" class="modal-close" data-close-modal aria-label="Close dialog">×</button></div>
+      <label>Role title<input name="title" required placeholder="e.g. Graduate Software Engineer"></label>
+      <div class="form-columns"><label>Company<input name="company" required placeholder="Company name"></label><label>Location<input name="location" required placeholder="e.g. Bengaluru, India"></label></div>
+      <div class="form-columns"><label>Job type<select name="type"><option>Full-time</option><option>Internship</option><option>Graduate program</option></select></label><label>Graduation year eligibility<input name="graduation" placeholder="e.g. 2026, 2027"></label></div>
+      <label>Required skills <small>Comma-separated</small><input name="skills" required placeholder="e.g. Python, SQL, Communication"></label>
+      <div class="form-columns"><label>Application deadline<input name="deadline" type="date" required></label><label>Official application URL<input name="url" type="url" required placeholder="https://careers.example.com/role"></label></div>
+      <div class="source-disclaimer">ⓘ This demo uses sample and manually entered opportunities. Only add listings you are authorized to share.</div>
+      <div class="modal-actions"><button type="button" class="button button-quiet" data-close-modal>Cancel</button><button type="submit" class="button button-primary">Add &amp; run matching <span class="button-arrow">↗</span></button></div>
+    </form>
+  </dialog>
+  <dialog class="modal" id="student-modal">
+    <form id="student-form" method="dialog">
+      <div class="modal-heading"><div><div class="section-kicker">STUDENT PROFILE</div><h2>Add a student</h2><p>New profiles start private. Preferences can be changed or withdrawn at any time.</p></div><button type="button" class="modal-close" data-close-modal aria-label="Close dialog">×</button></div>
+      <div class="form-columns"><label>Full name<input name="name" required placeholder="Student name"></label><label>Email<input name="email" required type="email" placeholder="student@university.edu"></label></div>
+      <div class="form-columns"><label>Program<input name="program" required placeholder="e.g. B.Tech Computer Science"></label><label>Graduation year<input name="graduation" required type="number" min="2024" max="2035" value="2027"></label></div>
+      <label>Skills <small>Comma-separated</small><input name="skills" required placeholder="e.g. Python, React, Communication"></label>
+      <label>Preferred locations<input name="locations" placeholder="e.g. Bengaluru, Remote"></label>
+      <div class="form-checkboxes"><label><input name="alerts" type="checkbox" checked> Email me relevant job alerts</label><label><input name="sharing" type="checkbox"> I consent to share approved profile details with recruiters</label></div>
+      <div class="source-disclaimer">Recruiter sharing is optional and off by default. Only approved skills, projects, and education are shared.</div>
+      <div class="modal-actions"><button type="button" class="button button-quiet" data-close-modal>Cancel</button><button type="submit" class="button button-primary">Save student profile</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
